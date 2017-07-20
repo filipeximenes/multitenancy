@@ -10,12 +10,12 @@ class Spinner(models.Model):
 class UserSpinner(models.Model):
     customer = models.ForeignKey('customers.Customer')
 
-    user = models.ForeignKey('users.User')
-    spinner = models.ForeignKey('spinners.Spinner')
+    user = models.ForeignKey('users.User', related_name='owned_spinners')
+    spinner = models.ForeignKey('spinners.Spinner', related_name='owned_spinners')
 
 
 class Spin(models.Model):
     customer = models.ForeignKey('customers.Customer')
 
-    user_spinner = models.ForeignKey('spinners.UserSpinner')
-    duration = models.DurationField()
+    user_spinner = models.ForeignKey('spinners.UserSpinner', related_name='spins')
+    duration = models.PositiveIntegerField()
