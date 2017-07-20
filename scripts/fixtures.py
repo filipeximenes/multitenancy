@@ -8,7 +8,9 @@ from customers.models import Customer
 Customer.objects.all().delete()
 
 
-customer = mommy.make('customers.Customer')
+mommy.make('customers.Customer', name='default')
+
+customer = mommy.make('customers.Customer', name='test')
 user = mommy.make('users.User', customer=customer)
 
 poke_spinner = mommy.make(
